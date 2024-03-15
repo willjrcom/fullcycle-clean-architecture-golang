@@ -1,0 +1,10 @@
+GET http://localhost:8080/orders/all
+
+###
+POST http://localhost:8080/orders/new HTTP/1.1
+content-type: application/json
+
+{
+    "name": "order 2",
+    "total": 100.00
+}
