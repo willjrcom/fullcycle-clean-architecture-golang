@@ -4,10 +4,10 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/willjrcom/fullcycle-clean-architecture/golang/bootstrap/server"
-	"github.com/willjrcom/fullcycle-clean-architecture/golang/internal/domain"
-	"github.com/willjrcom/fullcycle-clean-architecture/golang/internal/usecase"
-	jsonpkg "github.com/willjrcom/fullcycle-clean-architecture/golang/pkg/json"
+	"github.com/willjrcom/fullcycle-clean-architecture-golang/bootstrap/server"
+	"github.com/willjrcom/fullcycle-clean-architecture-golang/internal/domain"
+	"github.com/willjrcom/fullcycle-clean-architecture-golang/internal/usecase"
+	jsonpkg "github.com/willjrcom/fullcycle-clean-architecture-golang/pkg/json"
 )
 
 type handlerOrderImpl struct {

@@ -1,6 +1,6 @@
 package graph
 
-import "github.com/willjrcom/fullcycle-clean-architecture/golang/internal/usecase"
+import "github.com/willjrcom/fullcycle-clean-architecture-golang/internal/usecase"
 
 // This file will not be regenerated automatically.
 //

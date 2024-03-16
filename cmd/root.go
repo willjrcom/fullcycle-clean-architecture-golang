@@ -10,12 +10,12 @@ import (
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/spf13/cobra"
-	"github.com/willjrcom/fullcycle-clean-architecture/golang/bootstrap/database"
-	"github.com/willjrcom/fullcycle-clean-architecture/golang/bootstrap/server"
-	"github.com/willjrcom/fullcycle-clean-architecture/golang/graph"
-	handlerimpl "github.com/willjrcom/fullcycle-clean-architecture/golang/internal/infra/handler"
-	"github.com/willjrcom/fullcycle-clean-architecture/golang/internal/infra/repository"
-	"github.com/willjrcom/fullcycle-clean-architecture/golang/internal/usecase"
+	"github.com/willjrcom/fullcycle-clean-architecture-golang/bootstrap/database"
+	"github.com/willjrcom/fullcycle-clean-architecture-golang/bootstrap/server"
+	"github.com/willjrcom/fullcycle-clean-architecture-golang/graph"
+	handlerimpl "github.com/willjrcom/fullcycle-clean-architecture-golang/internal/infra/handler"
+	"github.com/willjrcom/fullcycle-clean-architecture-golang/internal/infra/repository"
+	"github.com/willjrcom/fullcycle-clean-architecture-golang/internal/usecase"
 )
 
 // rootCmd represents the base command when called without any subcommands

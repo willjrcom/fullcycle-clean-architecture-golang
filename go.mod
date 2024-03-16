@@ -1,4 +1,4 @@
-module github.com/willjrcom/fullcycle-clean-architecture/golang
+module github.com/willjrcom/fullcycle-clean-architecture-golang
 
 go 1.22.0
 

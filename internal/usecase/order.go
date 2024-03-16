@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/google/uuid"
-	"github.com/willjrcom/fullcycle-clean-architecture/golang/internal/domain"
+	"github.com/willjrcom/fullcycle-clean-architecture-golang/internal/domain"
 )
 
 type Service struct {

@@ -8,12 +8,12 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/willjrcom/fullcycle-clean-architecture/golang/graph/model"
-	"github.com/willjrcom/fullcycle-clean-architecture/golang/internal/domain"
+	"github.com/willjrcom/fullcycle-clean-architecture-golang/graph/model"
+	"github.com/willjrcom/fullcycle-clean-architecture-golang/internal/domain"
 )
 
 // CreateOrder is the resolver for the createOrder field.
-func (r *mutationResolver) CreateOrder(ctx context.Context, input model.NewOrder) (*model.Order, error) {
+func (r *mutationResolver) CreateOrder(ctx context.Context, input model.NewOrder) (*domain.Order, error) {
 	orderCommonAttributes := domain.OrderCommonAttributes{Name: input.Name, Total: input.Total}
 
 	id, err := r.Service.NewOrder(ctx, orderCommonAttributes)
@@ -22,7 +22,11 @@ func (r *mutationResolver) CreateOrder(ctx context.Context, input model.NewOrder
 		return nil, err
 	}
 
-	order := &model.Order{ID: id.String(), Name: input.Name, Total: input.Total}
+	order := &domain.Order{
+		ID:                    id,
+		OrderCommonAttributes: orderCommonAttributes,
+	}
+
 	return order, nil
 }
 
@@ -37,16 +41,16 @@ func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
 }
 
 // Orders is the resolver for the orders field.
-func (r *queryResolver) Orders(ctx context.Context) ([]*model.Order, error) {
+func (r *queryResolver) Orders(ctx context.Context) ([]*domain.Order, error) {
 	orders, err := r.Service.ListOrders(ctx)
 
 	if err != nil {
 		return nil, err
 	}
 
-	modelOrders := []*model.Order{}
+	modelOrders := []*domain.Order{}
 	for _, order := range orders {
-		modelOrders = append(modelOrders, &model.Order{ID: order.ID.String(), Name: order.Name, Total: order.Total})
+		modelOrders = append(modelOrders, &domain.Order{ID: order.ID, OrderCommonAttributes: order.OrderCommonAttributes})
 	}
 	return modelOrders, nil
 }
