@@ -5,6 +5,11 @@ POST http://localhost:8080/orders/new HTTP/1.1
 content-type: application/json
 
 {
-    "name": "order 2",
-    "total": 100.00
+    "name": "denis",
+    "total": 100000.00
 }
+
+###
+POST http://localhost:8080/query
+
+###

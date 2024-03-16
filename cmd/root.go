@@ -7,9 +7,12 @@ import (
 	"context"
 	"os"
 
+	"github.com/99designs/gqlgen/graphql/handler"
+	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/spf13/cobra"
 	"github.com/willjrcom/fullcycle-clean-architecture/golang/bootstrap/database"
 	"github.com/willjrcom/fullcycle-clean-architecture/golang/bootstrap/server"
+	"github.com/willjrcom/fullcycle-clean-architecture/golang/graph"
 	handlerimpl "github.com/willjrcom/fullcycle-clean-architecture/golang/internal/infra/handler"
 	"github.com/willjrcom/fullcycle-clean-architecture/golang/internal/infra/repository"
 	"github.com/willjrcom/fullcycle-clean-architecture/golang/internal/usecase"
@@ -36,6 +39,11 @@ var rootCmd = &cobra.Command{
 		orderUseCase := usecase.NewService(orderRepository)
 		orderHandler := handlerimpl.NewHandlerOrder(orderUseCase)
 		serverInstance.AddHandler(orderHandler)
+
+		srv := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{Service: orderUseCase}}))
+
+		serverInstance.Router.Handle("/", playground.Handler("GraphQL playground", "/query"))
+		serverInstance.Router.Handle("/query", srv)
 
 		if err := serverInstance.StartServer(":8080"); err != nil {
 			panic(err)
