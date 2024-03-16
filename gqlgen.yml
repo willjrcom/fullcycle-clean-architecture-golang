@@ -76,7 +76,7 @@ autobind:
 models:
   Order:
     model:
-      - github.com/willjrcom/fullcycle-clean-architecture-golang/internal/domain/order.Order"
+      - github.com/willjrcom/fullcycle-clean-architecture-golang/internal/domain.Order
   ID:
     model:
       - github.com/99designs/gqlgen/graphql.ID
