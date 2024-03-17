@@ -1,0 +1,23 @@
+syntax = "proto3";
+package pb;
+option go_package = "internal/infra/pb";
+
+message Order {
+    string id = 1;
+    string name = 2;
+    float total = 3;
+}
+
+message CreateOrderRequest {
+    string name = 1;
+    float total = 2;
+}
+
+message OrderResponse {
+    Order order = 1;
+    
+}
+
+service OrderService {
+    rpc NewOrder(CreateOrderRequest) returns (OrderResponse) {}
+}
