@@ -8,25 +8,13 @@ type Order {
   total: Float!
 }
 
-type Todo {
-  id: ID!
-  name: String!
-  total: Float!
-}
 
 type Query {
-  todos: [Todo!]!
   orders: [Order!]!
-}
-
-input NewTodo {
-  text: String!
-  userId: String!
 }
 
 type Mutation {
   createOrder(input: NewOrder!): Order!
-  createTodo(input: NewTodo!): Todo!
 }
 
 input NewOrder {

@@ -6,7 +6,6 @@ package graph
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/willjrcom/fullcycle-clean-architecture-golang/graph/model"
 	"github.com/willjrcom/fullcycle-clean-architecture-golang/internal/domain"
@@ -30,19 +29,9 @@ func (r *mutationResolver) CreateOrder(ctx context.Context, input model.NewOrder
 	return order, nil
 }
 
-// CreateTodo is the resolver for the createTodo field.
-func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
-	panic(fmt.Errorf("not implemented: CreateTodo - createTodo"))
-}
-
 // ID is the resolver for the id field.
 func (r *orderResolver) ID(ctx context.Context, obj *domain.Order) (string, error) {
-	panic(fmt.Errorf("not implemented: ID - id"))
-}
-
-// Todos is the resolver for the todos field.
-func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
-	panic(fmt.Errorf("not implemented: Todos - todos"))
+	return obj.ID.String(), nil
 }
 
 // Orders is the resolver for the orders field.

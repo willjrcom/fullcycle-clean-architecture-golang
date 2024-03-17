@@ -10,16 +10,5 @@ type NewOrder struct {
 	Total float64 `json:"total"`
 }
 
-type NewTodo struct {
-	Text   string `json:"text"`
-	UserID string `json:"userId"`
-}
-
 type Query struct {
-}
-
-type Todo struct {
-	ID    string  `json:"id"`
-	Name  string  `json:"name"`
-	Total float64 `json:"total"`
 }

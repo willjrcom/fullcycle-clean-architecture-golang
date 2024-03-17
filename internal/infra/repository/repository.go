@@ -41,3 +41,16 @@ func (r *OrderRepositoryBun) GetAllOrders(ctx context.Context) ([]domain.Order, 
 
 	return orders, nil
 }
+
+func (r *OrderRepositoryBun) GetByID(ctx context.Context, id string) (*domain.Order, error) {
+	r.mu.TryLock()
+	defer r.mu.Unlock()
+
+	order := domain.Order{}
+	err := r.db.NewSelect().Model(&order).Where("id = ?", id).Scan(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	return &order, nil
+}

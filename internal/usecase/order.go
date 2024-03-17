@@ -23,3 +23,7 @@ func (s *Service) NewOrder(ctx context.Context, orderCommonAttributes domain.Ord
 func (s *Service) ListOrders(ctx context.Context) ([]domain.Order, error) {
 	return s.r.GetAllOrders(ctx)
 }
+
+func (s *Service) GetByID(ctx context.Context, id string) (*domain.Order, error) {
+	return s.r.GetByID(ctx, id)
+}
