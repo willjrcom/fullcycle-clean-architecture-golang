@@ -37,3 +37,25 @@ func (s *ServiceGrpc) NewOrder(ctx context.Context, input *CreateOrderRequest) (
 	}
 	return orderResponse, nil
 }
+
+func (s *ServiceGrpc) ListOrders(ctx context.Context, _ *Blank) (*OrderListResponse, error) {
+	orders, err := s.s.ListOrders(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	pbOrders := []*Order{}
+
+	for _, order := range orders {
+		pbOrders = append(pbOrders, &Order{
+			Id:    order.ID.String(),
+			Name:  order.Name,
+			Total: float32(order.Total),
+		})
+	}
+
+	orderListResponse := &OrderListResponse{
+		Orders: pbOrders,
+	}
+	return orderListResponse, nil
+}

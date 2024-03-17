@@ -10,6 +10,6 @@ content-type: application/json
 }
 
 ###
-POST http://localhost:8080/query
+GET http://localhost:8080/orders/all
 
 ###
